@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Okta User Detail</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+
+<!--<div th:insert="fragments/header :: header"></div>-->
+
+<div class="container">
+    <h1>Okta user Detail</h1>
+    <hr />
+    <h1 th:text="Hello + ${oktaUsers.id}"> </h1>
+    <h1 th:text="Hello + ${oktaUsers.profile.firstName}+' '+${oktaUsers.profile.lastName}"> </h1>
+    <h1 th:text="Hello + ${oktaUsers.profile.email}"> </h1>
+    <h1 th:text="Hello + ${oktaUsers.status}"> </h1>
+    <h1 th:text="Hello + ${oktaUsers.created}"> </h1>
+    <h1 th:text="Hello + ${oktaUsers.statusChanged}"> </h1>
+  <h1 th:text="Hello + ${oktaUsers.credentials.password}"> </h1>
+    <h1 th:text="Hello + ${oktaUsers.stateToken}"> </h1>
+<!--    <h1 th:text="Hello + ${oktaUser.stateToken}"> </h1>-->
+<!--    <h1 th:text="Hello + ${oktaUsers.statetoken}"> </h1>-->
+
+<!--  <h1 th:text="Hello + ${oktaUsers.credentials.recoveryQuestion.question}"> </h1>-->
+
+</div>
+
+
+</body>
+</html>

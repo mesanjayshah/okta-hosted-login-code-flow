@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://global.oktacdn.com/okta-signin-widget/6.0.1/css/okta-sign-in.min.css">
+    <script src="https://global.oktacdn.com/okta-signin-widget/6.0.1/js/okta-sign-in.min.js"></script>
+    <title>Question Bank Management Console</title>
+</head>
+<body>
+<!--<header th:insert="header.html :: header"> </header>-->
+<!--<div th:text="${data}"></div>-->
+<!--<div>-->
+<!--    <li class="nav-item">-->
+<!--        <a th:href="@{/oktas/userList}" class="nav-link">Okta User List</a>-->
+<!--    </li>-->
+<!--</div>-->
+
+<div align="center" class="jumbotron vertical-center mx-5 my-5">
+    <h2>Question Bank Management Console</h2>
+    <div class="container">
+        <a href="okta/userList" class="btn btn-dark btn-lg my-5">Okta User List</a>
+    </div>
+    <div class="container">
+        <a href="category" class="btn btn-dark btn-lg my-5">Show all categories</a>
+    </div>
+    <div class="container">
+        <a href="questions" class="btn btn-dark btn-lg my-5">Show all questions and answers</a>
+    </div>
+    <div class="container">
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a th:href="@{/logout}" class="nav-link">Log out</a>
+        </nav>
+
+    </div>
+
+</div>
+</body>
+</html>

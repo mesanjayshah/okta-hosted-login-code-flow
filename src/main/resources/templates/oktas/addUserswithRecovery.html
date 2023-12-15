@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title> Add page</title>
+
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+
+<!--<div th:insert="fragments/header :: header"></div>-->
+
+<div class="container">
+  <h1>Add Employee</h1>
+  <hr/>
+  <form action="#" th:action="@{/okta/saveOktaUserWithRecovery}" method="post" th:object="${oktaUsers}">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">First Name:</label>
+      <div class="col-sm-10">
+        <input type="text" th:field="*{profile.firstName}" placeholder="Enter First name"
+               class="form-control col-4 mb-4"/><br/>
+        <!--                <input type="text" field="*{firstName}" name="firstName" placeholder="Enter First name"-->
+        <!--                       class="form-control col-4 mb-4"/><br/>-->
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Last Name</label>
+      <div class="col-sm-10">
+        <input type="text" th:field="*{profile.lastName}" placeholder="Enter Last name"
+               class="form-control col-4 mb-4"/><br/>
+        <!--                <input type="text" field="*{lastName}" name="lastName" placeholder="Enter Last name"-->
+        <!--                       class="form-control col-4 mb-4"/><br/>-->
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Email Id:</label>
+      <div class="col-sm-10">
+        <input type="text" th:field="*{profile.email}" placeholder="Enter Email Id"
+               class="form-control col-4 mb-4"/><br/>
+        <!--                <input type="text" field="*{email}" name="email" placeholder="Enter Email"-->
+        <!--                       class="form-control col-4 mb-4"/><br/>-->
+
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Login Id:</label>
+      <div class="col-sm-10">
+        <input type="text" th:field="*{profile.login}" placeholder="Enter Login Id"
+               class="form-control col-4 mb-4"/><br/>
+        <!--                <input type="text" field="*{login}" name="login" placeholder="Enter login"-->
+        <!--                       class="form-control col-4 mb-4"/><br/>-->
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Password:</label>
+      <div class="col-sm-10">
+        <input type="text" th:field="*{credentials.password}" placeholder="Enter Password" class="form-control col-4 mb-4"/><br/>
+
+      </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">RecoveryQuestion:</label><br/>
+<!--      <p>Who's a major player in the cowboy scene?</p>-->
+      <div class="col-sm-10">
+        <input type="text"   th:field="*{credentials.Recovery_question.question}" placeholder="Enter question" class="form-control col-4 mb-4"/><br/>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">RecoveryAnswer:</label><br/>
+      <!--      <p>Who's a major player in the cowboy scene?</p>-->
+      <div class="col-sm-10">
+        <input type="text"   th:field="*{credentials.Recovery_question.answer}" placeholder="Enter answer" class="form-control col-4 mb-4"/><br/>
+      </div>
+    </div>
+
+
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">choose One:</label>
+      <div class="col-sm-10">
+        <select th:field="*{profile.val}">
+          <option value="true">Activated</option>
+          <option value="false">Suspend</option>
+        </select>
+
+      </div></div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+<!--  <p th:if="${loginError}" class="error">Wrong user or password</p>-->
+
+
+</div>
+
+
+</body>
+</html>

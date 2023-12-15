@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Okta User Detais recovery question</title>
+
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+
+<h1>This is Question List</h1>
+<form  method="POST"
+      th:action="@{/okta/saveOktaUserWithRecoveryQuestion}"
+      th:object="${oktaUsers}">
+
+
+<!--  th:object="${question}"-->
+  <div class="form-row">
+    <div class="col-auto">
+      <label>Question
+        <select class="form-control custom-select" id="question" name="question"
+                 th:field="*{credentials.recoveryQuestion.question}">
+          <label>Select one question</label>
+          <option th:each="status : ${question}"
+                  th:text="${status.questionText}"
+                  th:value="${status.questionText}"></option>
+          <input type="text" th:field="*{credentials.recoveryQuestion.answer}" placeholder="Enter answer" class="form-control col-4 mb-4"/><br/>
+        </select>
+      </label>
+    </div>
+  </div>
+    <button type="submit">Submit</button>
+</form>
+
+
+
+</body>
+</html>

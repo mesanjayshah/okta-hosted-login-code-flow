@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Okta User List</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+
+<!--<div th:insert="fragments/header :: header"></div>-->
+
+
+<div class="container">
+    <h2>Okta User List</h2>
+
+    <a th:href="@{/okta/addOktaUserForm}" class="btn btn-primary mb-2">Add Okta User </a></br>
+<!--    <a th:href="@{/okta/addActivatedOktaUserForm}" class="btn btn-primary mb-2">Create activated user without credentials</a>-->
+
+    <a th:href="@{/okta/addOktaUserFormWithPassword}" class="btn btn-primary mb-2">Add Okta User with Password</a></br>
+
+    <a th:href="@{/okta/addOktaUserFormWithRecovery}" class="btn btn-primary mb-2">Add Okta User with Recovery</a></br>
+    <a th:href="@{/okta/addOktaUserFormInGroups}" class="btn btn-primary mb-2">Add Okta User in group</a></br>
+    <a th:href="@{/okta/addAuthentication}"  class="btn btn-info">Authentication</a></td>
+
+
+
+    <!--    <a th:href="@{/okta/recoveryQuestion}"  class="btn btn-primary mb-2">Add Okta User with Selected Recovery Question list</a>-->
+
+    <div class="row">
+        <div class="col">
+            <div th:if="${ not#lists.isEmpty(oktaUsersList)}">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>User Id</th>
+                        <th>User Name</th>
+                        <th>Created Date</th>
+                        <th>Email</th>
+                        <th>Contact No</th>
+                        <th>status</th>
+                        <th>Action</th>
+
+
+<!--                        <div sec:authorize="hasAuthority('ADMIN')">-->
+<!--                            <th>Action</th>-->
+<!--                        </div>-->
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="oktaUser : ${oktaUsersList}">
+                        <div th:if="${oktaUser.id != '00u2mt8en79QbPZNW5d7'}">
+                            <td><a th:href="@{/okta/singleUser(id=${oktaUser.id})}" >show Details</a></td>
+                            <td th:text="${oktaUser.profile.firstName}+ ' ' +${oktaUser.profile.lastName}" />
+                            <td th:text="${oktaUser.created}" />
+                            <td th:text="${oktaUser.profile.email}" />
+                            <td th:text="${oktaUser.profile.mobilePhone}" />
+                            <td th:text="${oktaUser.status}" />
+                            <td th:text="${oktaUser.stateToken}" />
+
+
+<!--                            sec:authorize="hasAuthority('ADMIN')"-->
+
+                            <div >
+
+                                <td>
+                                    <a th:href="@{/okta/recoveryQuestion(id=${oktaUser.id})}"  class="btn btn-info">Add a recovery question</a>
+                                    <a th:href="@{/okta/activateOktaUser(id=${oktaUser.id})}"  class="btn btn-info">Activate</a>
+                                    <a th:href="@{/okta/deactivateOktaUser(id=${oktaUser.id})}"  class="btn btn-info">Deactivate</a>
+                                    <a th:href="@{/okta/deleteOktaUser(id=${oktaUser.id})}"  class="btn btn-info">Delete</a>
+                                    <a th:href="@{/okta/addPassword(id=${oktaUser.id})}"  class="btn btn-info">Set Password</a>
+                                    <a th:href="@{/okta/addOktaUserFormWithResetPassword(id=${oktaUser.id})}"  class="btn btn-info">Reset Password</a>
+                                    <a th:href="@{/okta/addforgetPasswordWithSecurityAnswer(id=${oktaUser.id})}"  class="btn btn-info">Forget Password</a>
+                                    <a th:href="@{/okta/userToken(id=${oktaUser.id})}"  class="btn btn-info">Token</a>
+
+
+
+                            </div>
+                        </div>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

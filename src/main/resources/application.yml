@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+okta:
+  oauth2:
+    orgUrl: https://dev-45222684.okta.com/
+    issuer: https://dev-45222684.okta.com/oauth2/default
+    client-id: 0oa5v6saxbdburklM5d7
+    client-secret: 3NNQd478BzBAICIDyl2gx0V1fPvtK5VwU1tzAPDK
+    redirect-uri: /authorize/callback
+    token: 00KEZ5lUA1CxI-Hbo39zSypWq42noVM6OYKGO4ZcXk
+
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          okta:
+            authorization-uri: http://localhost:${server.port}/custom-login
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_okta
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    show-sql: true
+    hibernate:
+     ddl-auto: update
+
+    properties:
+     hibernate:dialect: org.hibernate.dialect.MySQL5Dialect
